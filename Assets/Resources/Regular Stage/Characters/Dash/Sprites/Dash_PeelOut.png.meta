@@ -1,0 +1,466 @@
+fileFormatVersion: 2
+guid: 49137520559176644a36ff5c8747320a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dash_PeelOut_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 274
+        width: 59
+        height: 35
+      alignment: 9
+      pivot: {x: 0.58474576, y: 0.42857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f565e2447a2fc34cbe39c8596eba9ec
+      internalID: 787415849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_1
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 274
+        width: 57
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5701754, y: 0.41666666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faadb3d2d62569f439c700463ed535e8
+      internalID: 1297372290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_2
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 235
+        width: 61
+        height: 35
+      alignment: 9
+      pivot: {x: 0.58196723, y: 0.42857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398b96a87010afa48883632dd34cdbc0
+      internalID: 696067941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_3
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 235
+        width: 59
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5338983, y: 0.41666666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18cfe56416f98b44aad41a7dce0ae78c
+      internalID: -2009912782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_4
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 196
+        width: 57
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5350877, y: 0.42857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742b2e64cd42dc541a33b497881b064b
+      internalID: 1619009914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_5
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 196
+        width: 57
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5350877, y: 0.41666666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c617a0d91f120f742b03a5bd72a27fbc
+      internalID: 351286008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_6
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 157
+        width: 59
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5169492, y: 0.42857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0966d642df06af469452d64536fc121
+      internalID: -909152555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_7
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 157
+        width: 59
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5169492, y: 0.41666666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fc313cae7746dd43bc7a28b425864e3
+      internalID: -1284800881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_8
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 118
+        width: 67
+        height: 35
+      alignment: 9
+      pivot: {x: 0.48507464, y: 0.42857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2210db8687b63f64097913d59ae0ea51
+      internalID: 162036075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_9
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 117
+        width: 69
+        height: 37
+      alignment: 9
+      pivot: {x: 0.48550725, y: 0.43243244}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c808c7295c6fde44090039d9be8c429e
+      internalID: -460161158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_10
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 79
+        width: 69
+        height: 37
+      alignment: 9
+      pivot: {x: 0.51449275, y: 0.4054054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dee18586f7e286844989af9ff660663a
+      internalID: 7215245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_11
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 79
+        width: 69
+        height: 36
+      alignment: 9
+      pivot: {x: 0.51449275, y: 0.41666666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c990ca05d55ab546a4ec32d0500cd9f
+      internalID: -608400320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_12
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 40
+        width: 68
+        height: 36
+      alignment: 9
+      pivot: {x: 0.50735295, y: 0.41666666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f14230a58821544eb8b090425e04e91
+      internalID: 1359557824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_13
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 40
+        width: 67
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41666666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6815155b9fc147040a796d45bee637ea
+      internalID: -993150844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_14
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1
+        width: 68
+        height: 35
+      alignment: 9
+      pivot: {x: 0.50735295, y: 0.42857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb610c900d1fa84d8b1bba10625eb23
+      internalID: -2005751821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_PeelOut_15
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 1
+        width: 71
+        height: 38
+      alignment: 9
+      pivot: {x: 0.556338, y: 0.39473686}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f29295e07931a408094315a114bf43
+      internalID: 1041901235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Dash_PeelOut_9: -460161158
+      Dash_PeelOut_15: 1041901235
+      Dash_PeelOut_18: -785861549
+      Dash_PeelOut_12: 1359557824
+      Dash_PeelOut_2: 696067941
+      Dash_PeelOut_17: -1618244319
+      Dash_PeelOut_11: -608400320
+      Dash_PeelOut_3: -2009912782
+      Dash_PeelOut_4: 1619009914
+      Dash_PeelOut_8: 162036075
+      Dash_PeelOut_1: 1297372290
+      Dash_PeelOut_7: -1284800881
+      Dash_PeelOut_5: 351286008
+      Dash_PeelOut_0: 787415849
+      Dash_PeelOut_19: 1809788150
+      Dash_PeelOut_16: -940310219
+      Dash_PeelOut_10: 7215245
+      Dash_PeelOut_14: -2005751821
+      Dash_PeelOut_6: -909152555
+      Dash_PeelOut_13: -993150844
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
