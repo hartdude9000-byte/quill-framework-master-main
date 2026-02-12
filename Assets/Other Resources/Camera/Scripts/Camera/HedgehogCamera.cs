@@ -59,9 +59,6 @@ public class HedgehogCamera : MonoBehaviour
     [Tooltip("The distance between the player and the camera"), LastFoldoutItem()]
     private Vector2 cameraToPlayerDistance;
 
-    
-
-
     /// <summary>
     /// The single instance of the Camera
     /// </summary>
@@ -153,7 +150,7 @@ public class HedgehogCamera : MonoBehaviour
 
     /// <summary>
     /// Updates the core details that handles camera movement
-    /// </summary>y
+    /// </summary>
     private void UpdateCameraDetails()
     {
         this.targetPosition = this.cameraTarget != null ? this.cameraTarget.transform.position : this.cameraPosition;
@@ -162,7 +159,7 @@ public class HedgehogCamera : MonoBehaviour
 
     /// <summary>
     /// Calculates the position of the camera relative to the cameras mode and the onscreen target
-    /// </summary>y
+    /// </summary>
     private void CalculateCameraMovement()
     {
         switch (this.cameraMode)
@@ -242,6 +239,7 @@ public class HedgehogCamera : MonoBehaviour
     {
         this.SetCameraPosition(this.cameraPosition);
         this.cameraParallaxHandler.UpdateParallaxBackgroundPositions();
+        this.cameraParallaxHandler.CheckParallaxResetTriggers(GMStageManager.Instance().GetPlayer().transform.position);
     }
 
     /// <summary>
@@ -309,7 +307,7 @@ public class HedgehogCamera : MonoBehaviour
 
     /// <summary>
     /// Handles the way the camera moves while the player is in the air
-    /// </summary>y
+    /// </summary>
     private void HandleAirVerticalCameraMovement()
     {
         if (this.player.GetGrounded())
@@ -488,7 +486,7 @@ public class HedgehogCamera : MonoBehaviour
     /// <summary>
     /// Checks if a sprite render is within the visibility of the camera view
     /// <param name="spriteRenderer"/> The sprite renderer of the object being checked for </param>
-    /// </summary/>
+    /// </summary>
     public bool IsSpriteWithinCameraView(SpriteRenderer spriteRenderer)
     {
         Bounds bounds = spriteRenderer.bounds;
@@ -504,7 +502,7 @@ public class HedgehogCamera : MonoBehaviour
     /// <summary>
     /// Checks if the bounds are within the cameras view
     /// <param name="bounds"/> The bounds being checked against </param>
-    /// </summary/>
+    /// </summary>
     public bool AreBoundsWithinCameraView(Bounds bounds)
     {
         bool isWithinHorizontalBounds = bounds.max.x > this.GetBounds().min.x && bounds.min.x < this.GetBounds().max.x;
@@ -520,37 +518,37 @@ public class HedgehogCamera : MonoBehaviour
 
     /// <summary>
     /// Sets the camera
-    /// </summary/>
+    /// </summary>
     public void SetCamera(Camera camera) => this.camera = camera;
+
     /// <summary>
     /// Gets the camera 
-    /// </summary/>
+    /// </summary>
     public Camera GetCamera() => this.camera;
 
     /// <summary>
     /// Gets the camera bounds handler
-    /// </summary/>
+    /// </summary>
     public CameraBoundsHandler GetCameraBoundsHandler() => this.cameraBoundsHandler;
 
     /// <summary>
     /// Gets the camera triggers handler
-    /// </summary/>
+    /// </summary>
     public CameraTriggersHandler GetCameraTriggersHandler() => this.cameraTriggersHandler;
 
     /// <summary>
     /// Gets the camera pause handler
-    /// </summary/>
+    /// </summary>
     public CameraRenderFreezeHandler GetCameraRenderFreezeHandler() => this.cameraRenderFreezeHandler;
 
     /// <summary>
     /// Gets the camera look handler
-    /// </summary/>
+    /// </summary>
     public CameraLookHandler GetCameraLookHandler() => this.cameraLookHandler;
-
 
     /// <summary>
     /// Gets the camera parllax handler
-    /// </summary/>
+    /// </summary>
     public CameraParallaxHandler GetCameraParallaxHandler() => this.cameraParallaxHandler;
 
 #if UNITY_EDITOR
@@ -569,9 +567,10 @@ public class HedgehogCamera : MonoBehaviour
         }
     }
 #endif
+
     /// <summary>
     /// Adds a Layer to the cameras culling mask
-    /// <param name="layer"> The layer to addk</param>
+    /// <param name="layer"> The layer to add</param>
     /// </summary>
     public void AddLayerToCullingMask(int layer) => this.camera.cullingMask |= 1 << layer;
 
@@ -581,4 +580,3 @@ public class HedgehogCamera : MonoBehaviour
     /// </summary>
     public void RemoveLayerFromCullingMask(int layer) => this.camera.cullingMask &= ~(1 << layer);
 }
-

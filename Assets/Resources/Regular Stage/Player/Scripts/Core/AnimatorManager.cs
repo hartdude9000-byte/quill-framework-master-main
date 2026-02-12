@@ -50,6 +50,8 @@ public class AnimatorManager : MonoBehaviour
     public string currentlyCheckAnimation = "";
     private float currentSpeedMultiplier;
 
+    private float idleTimer = 0f;
+
     //Animator Values hashes
     private int characterHash;
     private int characterFloatHash;
@@ -80,6 +82,7 @@ public class AnimatorManager : MonoBehaviour
         this.actionManager = this.GetComponent<ActionManager>();
         this.gimmickManager = this.GetComponent<GimmickManager>();
     }
+
     private void Start()
     {
         this.SetAnimatorHashValues();
@@ -89,6 +92,7 @@ public class AnimatorManager : MonoBehaviour
             this.Reset();
         }
     }
+
     /// <summary>
     /// Gets a reference to the animator
     /// </summary>
@@ -119,6 +123,7 @@ public class AnimatorManager : MonoBehaviour
         this.otherAnimationSubstateHash = Animator.StringToHash("OtherAnimationSubstate");
         this.extraCharacterInfoHash = Animator.StringToHash("ExtraCharacterInfo");
     }
+
     /// <summary>
     /// Updates the current player animation
     /// </summary>
@@ -129,7 +134,6 @@ public class AnimatorManager : MonoBehaviour
             return;
         }
 
-        //If the victory is playing no more updates
         this.UpdateCoreStateAnimatorVariables();
         this.UpdateSubStates();
         this.CalculateAnimationSpeedMultiplier();
@@ -138,7 +142,7 @@ public class AnimatorManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Calculate the values for current speed multiplier based on the playrs conditions
+    /// Calculate the values for current speed multiplier based on the players conditions
     /// </summary>
     private void CalculateAnimationSpeedMultiplier()
     {
@@ -173,6 +177,7 @@ public class AnimatorManager : MonoBehaviour
             this.currentSpeedMultiplier = Mathf.Abs(minSpinRev + Mathf.Floor(spinRev / 2)) * this.spinDashMultiplier;
         }
     }
+
     /// <summary>
     /// Updates the core animator variables
     /// </summary>
@@ -202,13 +207,23 @@ public class AnimatorManager : MonoBehaviour
             this.animator.SetInteger(this.gimmickSubstateHash, 0);
         }
 
-        //Apply the super peel out to sonic alone
-        if(GMCharacterManager.Instance().currentCharacter == PlayableCharacter.Sonic && this.player.GetActionManager().GetAction<SuperPeelOut>() != null)
+        if (GMCharacterManager.Instance().currentCharacter == PlayableCharacter.Sonic && this.player.GetActionManager().GetAction<SuperPeelOut>() != null)
         {
             this.animator.SetInteger(this.extraCharacterInfoHash, (int)ExtraCharacterInfo.HasSuperPeelOut);
         }
 
         this.animator.SetBool(this.groundedHash, this.player.GetGrounded());
+
+        // Update idle timer for bored animation
+        if (this.player.GetGrounded() && Mathf.Abs(this.player.groundVelocity) < 0.1f)
+        {
+            this.idleTimer += Time.deltaTime;
+        }
+        else
+        {
+            this.idleTimer = 0f;
+        }
+        this.animator.SetFloat("IdleTimer", this.idleTimer);
     }
 
     /// <summary>
@@ -229,11 +244,9 @@ public class AnimatorManager : MonoBehaviour
     {
         this.currentAnimationFrame = this.GetCurrentAnimationFrame();
 
-        //When going super always compute the air state... just incase 
         if (this.player.GetActionManager().CheckActionIsBeingPerformed<SuperTransform>())
         {
             this.SwitchSubstate(SubState.Aerial);
-
             return;
         }
 
@@ -260,10 +273,8 @@ public class AnimatorManager : MonoBehaviour
         if (this.animator.GetCurrentAnimatorClipInfo(0).Length > 0)
         {
             AnimationClip animatorClipInfo = this.animator.GetCurrentAnimatorClipInfo(0)[0].clip;
-
             return (int)(animatorClipInfo.length * (this.animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1) * animatorClipInfo.frameRate);
         }
-
         return 0;
     }
 
@@ -279,10 +290,8 @@ public class AnimatorManager : MonoBehaviour
     {
         if (this.player.GetGrounded() == false && this.animator.GetInteger(this.actionSubstateHash) == 0)
         {
-            //Transfer to the air walk animation smoothly
             if (this.AnimationIsPlaying("Air Walk") == false && this.player.groundVelocity < 276.99)
             {
-                //The walk animations has 11 frames while air walk only has 10 frames so if the last frame is playing reduce by 1
                 if (this.currentAnimationFrame == 11)
                 {
                     this.currentAnimationFrame = 10;
@@ -292,7 +301,6 @@ public class AnimatorManager : MonoBehaviour
         }
         else if (this.player.GetGrounded())
         {
-            //Transfer from the walk animation to the ground smoothly
             if (this.AnimationIsPlaying("Air Walk") && this.player.groundVelocity < 276.99)
             {
                 this.animator.Play("Movement Cycles", 0, (float)this.currentAnimationFrame / this.airWalkAnimationLength);
@@ -302,19 +310,16 @@ public class AnimatorManager : MonoBehaviour
 
     /// <summary>
     /// Play an animation by its name in the animator
-    /// <param name="animationName">The name of the animation to play</param>
-    /// <param name="animationIndex">The offset in which the animation will be played from</param>
     /// </summary>
     public void PlayAnimation(string animationName, float animationIndex = 0) => this.animator.Play(animationName, 0, animationIndex);
 
     /// <summary>
-    /// Sets the speed of the animator with 1 being normal, 0 being frozen and -1 being in reverse
-    /// <param name="animationName">The speed to be set</param>
+    /// Sets the speed of the animator
     /// </summary>
     public void SetAnimatorSpeed(float animatorSpeed) => this.animator.speed = animatorSpeed;
+
     /// <summary>
-    /// Checks if a certain animation int eh animator is being played
-    /// <param name="animationName">The name of the animation being played</param>
+    /// Checks if a certain animation in the animator is being played
     /// </summary>
     public bool AnimationIsPlaying(string animationName)
     {
@@ -351,37 +356,18 @@ public class AnimatorManager : MonoBehaviour
         return (int)(animatorClipInfo.length * 1 * animatorClipInfo.frameRate);
     }
 
-    /// <summary>
-    /// Updates the main substate of the animator which could be whether the player is grounded or in an aerial state
-    /// <param name="newState">The new substate to branc to </param>
-    /// <param name="switchAfterAnimation">What animation to play on the end if applicable</param>
-    /// </summary>
     public void SwitchSubstate(SubState newState, string switchAfterAnimation = "") => this.BranchUpdate((int)newState, AnimationSubstateType.PrimarySubstate, switchAfterAnimation);
 
-    /// <summary>
-    /// Updates the action branch between primary actions such as jumps, rolls e.t.c
-    /// <param name="newState">The new substate to branc to </param>
-    /// <param name="switchAfterAnimation">What animation to play on the end if applicable</param>
-    /// </summary>
     public void SwitchActionSubstate(ActionSubState newState, string switchAfterAnimation = "") => this.BranchUpdate((int)newState, AnimationSubstateType.ActionSubState, switchAfterAnimation);
 
-    /// <summary>
-    /// Updates the secondary action branch between  actions such as the dropdash,skid flip e.t.c
-    /// <param name="newState">The new substate to branc to </param>
-    /// <param name="switchAfterAnimation">What animation to play on the end if applicable</param>
-    /// </summary>
+    public void SwitchActionSubstate(int newState, string switchAfterAnimation = "") => this.BranchUpdate(newState, AnimationSubstateType.ActionSubState, switchAfterAnimation);
+
     public void SwitchActionSecondarySubstate(SubActionSubState newState, string switchAfterAnimation = "") => this.BranchUpdate((int)newState, AnimationSubstateType.SecondaryActionSubstate, switchAfterAnimation);
 
-    /// <summary>
-    /// Set the other animation substate which stands for values the arent represented within the scopes of the substate
-    /// <param name="value">The new value for the other animation substate </param>
-    /// </summary>
+    public void SwitchActionSecondarySubstate(int newState, string switchAfterAnimation = "") => this.BranchUpdate(newState, AnimationSubstateType.SecondaryActionSubstate, switchAfterAnimation);
+
     public void SetOtherAnimationSubstate(int value) => this.GetAnimator().SetInteger(this.otherAnimationSubstateHash, value);
 
-    /// <summary>
-    /// Switches beetween gimmick substates on the animator while also making use of triggers to force an update
-    /// <param name="gimmickState">The new gimmick substate to branch to </param>
-    /// </summary>
     public void SwitchGimmickSubstate(GimmickSubstate gimmickState)
     {
         if (this.animator.GetInteger(this.gimmickSubstateHash) != (int)gimmickState)
@@ -391,19 +377,12 @@ public class AnimatorManager : MonoBehaviour
 
         this.animator.SetTrigger(this.switchGimmickSubstateHash);
 
-        //When switching from gimmick back to normal substate
         if (gimmickState == 0)
         {
             this.animator.SetTrigger(this.switchSubstateHash);
         }
     }
 
-    /// <summary>
-    /// Switches been substates on the animator while also making use of triggers to force an update
-    /// <param name="substateValue">The new substate to branc to </param>
-    /// <param name="animationSubstate">The action substate to update to </param>
-    /// <param name="switchAfterAnimation">What animation to play on the end if applicable</param>
-    /// </summary>
     private void BranchUpdate(int substateValue, AnimationSubstateType animationSubstate = AnimationSubstateType.PrimarySubstate, string switchAfterAnimation = "", bool skipTrigger = false)
     {
         if (this.updateMode == AnimatorUpdateMode.NoUpdates)
@@ -433,83 +412,36 @@ public class AnimatorManager : MonoBehaviour
             }
             else
             {
-                this.StartCoroutine(this.WaitTillAnimationEnds(substateValue, switchAfterAnimation, animationSubstate));//Begin waiting
+                this.StartCoroutine(this.WaitTillAnimationEnds(substateValue, switchAfterAnimation, animationSubstate));
             }
         }
     }
 
-    /// <summary>
-    /// Get a reference to the main sub state hash in the animator
-    /// </summary>
     public int GetSubstateHash() => this.substateHash;
-
-    /// <summary>
-    /// Get a reference to the action sub state hash in the animator
-    /// </summary>
     public int GetActionSubStateHash() => this.actionSubstateHash;
-
-    /// <summary>
-    /// Get a reference to the secondary action substate hash in the animator
-    /// </summary>
     public int GetSecondaryActionSubstateHash() => this.secondaryActionSubstateHash;
-
-    /// <summary>
-    /// Get a reference to the gimmick sub state hash in the animator
-    /// </summary>
     public int GetGimmickSubstateHash() => this.gimmickSubstateHash;
-
-    /// <summary>
-    /// Get a reference to the main sub state value
-    /// </summary>
     public int GetSubstate() => this.animator.GetInteger(this.substateHash);
-
-    /// <summary>
-    /// Get a reference to the action sub state value
-    /// </summary>
     public int GetActionSubState() => this.animator.GetInteger(this.actionSubstateHash);
-
-    /// <summary>
-    /// Get a reference to the secondary action substate value
-    /// </summary>
     public int GetSecondaryActionSubstate() => this.animator.GetInteger(this.secondaryActionSubstateHash);
-
-    /// <summary>
-    /// Get a reference to the gimmick sub state value
-    /// </summary>
     public int GetGimmickSubstate() => this.animator.GetInteger(this.gimmickSubstateHash);
-
-    /// <summary>
-    /// Set the updat emode
-    /// </summary>
     public void SetUpdateMode(AnimatorUpdateMode updateMode) => this.updateMode = updateMode;
 
-    /// <summary>
-    /// This function is called by unity animation events to perform a specific action during any frame of the animation
-    /// </summary>
     public void AnimationToActionEvent(float eventID) { }
 
-    /// <summary>
-    /// Ensures the current substate branch is not updated till the animation is done playing
-    /// <param name="nextState">The new substate to branc to after copmpletion </param>
-    /// <param name="animationToWatch">The animation to wait for completion</param>
-    /// </summary>
     private IEnumerator WaitTillAnimationEnds(int nextState, string animationToWatch, AnimationSubstateType newSubstate)
     {
         this.animator.Play(animationToWatch);
         this.waitTillAnimationEnds = true;
         this.currentlyCheckAnimation = animationToWatch;
 
-        yield return new WaitForEndOfFrame();//Wait for the next frame to begin
+        yield return new WaitForEndOfFrame();
         yield return new WaitUntil(() => this.CheckIfCurrentAnimationIsAtEnd());
         this.waitTillAnimationEnds = false;
         this.currentlyCheckAnimation = "";
         this.BranchUpdate(nextState, newSubstate);
     }
 
-    /// <summary>
-    /// Swaps the animator data with another animator object
-    /// <param name="targetAnimatorManager">The Animator manager to swap to</param>
-    /// </summary>
     public void SwapAnimatorController(AnimatorManager targetAnimatorManager)
     {
         int animation = this.animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
@@ -533,5 +465,3 @@ public class AnimatorManager : MonoBehaviour
         this.animator.Play(animation, 0, animationNormalizedTime);
     }
 }
-
-

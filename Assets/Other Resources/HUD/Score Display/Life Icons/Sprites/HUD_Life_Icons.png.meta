@@ -116,8 +116,8 @@ TextureImporter:
       name: HUD_Life_Icons_X
       rect:
         serializedVersion: 2
-        x: 1
-        y: 21
+        x: 0
+        y: 18
         width: 9
         height: 13
       alignment: 0
@@ -138,7 +138,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 77
-        y: 3
+        y: 0
         width: 17
         height: 19
       alignment: 0
@@ -158,8 +158,8 @@ TextureImporter:
       name: HUD_Life_Icons_Sonic
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
+        x: 0
+        y: 0
         width: 18
         height: 17
       alignment: 0
@@ -179,8 +179,8 @@ TextureImporter:
       name: HUD_Life_Icons_Tails
       rect:
         serializedVersion: 2
-        x: 21
-        y: 3
+        x: 20
+        y: 0
         width: 17
         height: 16
       alignment: 0
@@ -200,8 +200,8 @@ TextureImporter:
       name: HUD_Life_Icons_Knuckles
       rect:
         serializedVersion: 2
-        x: 39
-        y: 3
+        x: 38
+        y: 0
         width: 18
         height: 17
       alignment: 0
@@ -221,10 +221,10 @@ TextureImporter:
       name: HUD_Life_Icons_Mighty
       rect:
         serializedVersion: 2
-        x: 58
-        y: 1
+        x: 57
+        y: 0
         width: 18
-        height: 19
+        height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,6 +234,27 @@ TextureImporter:
       bones: []
       spriteID: eb9a34e9cdd66b190800000000000000
       internalID: -7947043698133194306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HUD_Life_Icons_Dash
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 18
+        width: 28
+        height: 33
+      alignment: 9
+      pivot: {x: 0.6428572, y: 0.25757575}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 631999f6996fb1f4f94af091ea92a37c
+      internalID: -52208070
       vertices: []
       indices: 
       edges: []
@@ -255,6 +276,7 @@ TextureImporter:
       HUD_Life_Icons_Knuckles: -4294077909638314970
       HUD_Life_Icons_Sonic: -7383478231649528413
       HUD_Life_Icons_Mighty: -7947043698133194306
+      HUD_Life_Icons_Dash: -52208070
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

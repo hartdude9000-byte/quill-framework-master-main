@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Other Resources/Scenes/Main Menu/Scene/Main Menu Scene.unity
     guid: c34beac54d29e65448952613c8dfdca8
   - enabled: 1
-    path: Assets/Resources/Act Skin/Template Zone/Scene/TEST SCENE.unity
-    guid: b2541e1c31829d348b146073714ff0f7
+    path: Assets/Resources/Act Skin/Quasar Lake/Scenes/Quasar Tunnels.unity
+    guid: ebe3ad67442fcd24d97df15135859eb9
   - enabled: 1
     path: Assets/Resources/Act Skin/Quasar Lake/Scenes/Quasar Lake Act 1.unity
     guid: 039dfce8f55bd2449a39cb67f0e22cba

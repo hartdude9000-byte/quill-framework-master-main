@@ -81,8 +81,9 @@ public class VelocityCore : MonoBehaviour
     // Animation state names (must match Animator Controller exactly)
     private const string ANIM_ROLL = "Roll";
     private const string ANIM_TWIRL = "Twirl";
-    private const string ANIM_FALL = "Fall";
-    private const string ANIM_SUPER_PEEL_OUT = "Super Peel Out"; // Correct name with space
+    private const string ANIM_FALL = "Dash_Fall";
+    private const string ANIM_SUPER_PEEL_OUT = "Super Peel Out";
+    private const string ANIM_AIRBOOST_SIDEWAYS = "Dash_Airboost_Sideways"; // New animation for forward air boost
 
     /// <summary>
     /// Direction types for Air Boost
@@ -332,42 +333,56 @@ public class VelocityCore : MonoBehaviour
 
         if (this.showDebugLog)
         {
-            Debug.Log("VelocityCore: FLOW STATE ACTIVATED! (Dive Bomb Landing)");
+            Debug.Log("VelocityCore: FLOW STATE ACTIVATED! (Dive Bomb - already paid 50%)");
         }
     }
 
     /// <summary>
-    /// Update Flow State each physics frame
+    /// Update Flow State each frame
     /// </summary>
     private void UpdateFlowState()
     {
-        // Flow State continues through jumps/air - only check when grounded
+        // Check end conditions
+        float currentSpeed = this.player.GetGrounded() ? 
+            Mathf.Abs(this.player.groundVelocity) : Mathf.Abs(this.player.velocity.x);
+
+        // End if stopped
+        if (currentSpeed < this.flowStateMinVelocity)
+        {
+            this.DeactivateFlowState("Stopped moving");
+            return;
+        }
+
+        // End if direction changed (turned around)
+        int currentDirection = this.player.currentPlayerDirection;
+        if (currentDirection != this.flowStateDirection)
+        {
+            this.DeactivateFlowState("Changed direction");
+            return;
+        }
+
+        // Maintain speed while grounded
         if (this.player.GetGrounded())
         {
-            float currentSpeed = Mathf.Abs(this.player.groundVelocity);
-
-            if (currentSpeed < this.flowStateMinVelocity)
+            // Maintain flow state speed - ignore uphill gravity
+            float targetSpeed = this.flowStateSpeed * this.flowStateDirection;
+            
+            // If going downhill, allow faster speed
+            if (Mathf.Abs(this.player.groundVelocity) > this.flowStateSpeed)
             {
-                this.DeactivateFlowState("Stopped moving");
-                return;
+                // Keep the faster speed from downhill
             }
-
-            // Check if player is pressing opposite direction
-            float inputX = this.inputManager.GetCurrentInput().x;
-            if ((inputX > 0 && this.flowStateDirection < 0) || (inputX < 0 && this.flowStateDirection > 0))
+            else
             {
-                this.DeactivateFlowState("Changed direction");
-                return;
+                // Maintain flow state speed
+                this.player.groundVelocity = targetSpeed;
             }
-
-            // Maintain Flow State speed
-            float newVelocity = this.flowStateSpeed * this.flowStateDirection;
-            this.player.groundVelocity = newVelocity;
         }
 
         if (this.showDebugLog)
         {
-            float displaySpeed = this.player.GetGrounded() ? Mathf.Abs(this.player.groundVelocity) : Mathf.Abs(this.player.velocity.x);
+            float displaySpeed = this.player.GetGrounded() ? 
+                Mathf.Abs(this.player.groundVelocity) : Mathf.Abs(this.player.velocity.x);
             Debug.Log("VelocityCore: FLOW STATE ACTIVE | Speed=" + displaySpeed.ToString("F1") + " | Grounded=" + this.player.GetGrounded());
         }
     }
@@ -485,8 +500,8 @@ public class VelocityCore : MonoBehaviour
                 this.player.velocity.x = this.airBoostHorizontalVelocity * playerDirection;
                 this.player.velocity.y = 0f; // Neutral vertical - will fall naturally
                 this.player.SetBothHorizontalVelocities(this.airBoostHorizontalVelocity * playerDirection);
-                // Stay in Roll animation for forward boost
-                this.player.GetAnimatorManager().PlayAnimation(ANIM_ROLL);
+                // Play sideways air boost animation for forward boost
+                this.player.GetAnimatorManager().PlayAnimation(ANIM_AIRBOOST_SIDEWAYS);
                 
                 if (this.showDebugLog)
                 {
@@ -508,11 +523,14 @@ public class VelocityCore : MonoBehaviour
             return;
         }
 
-        // For upward boost, end when player starts falling
+        // For upward boost, when player starts falling, switch to fall animation but stay active
         if (this.airBoostDirection == AirBoostDirection.Upward && this.player.velocity.y <= 0)
         {
-            this.EndAirBoost("Started falling");
-            return;
+            // Keep playing Dash_Fall animation continuously to override framework's Air Walk
+            if (!this.player.GetAnimatorManager().AnimationIsPlaying(ANIM_FALL))
+            {
+                this.player.GetAnimatorManager().PlayAnimation(ANIM_FALL);
+            }
         }
     }
 
@@ -529,27 +547,18 @@ public class VelocityCore : MonoBehaviour
 
         if (wasActive)
         {
-            // Reset animation to proper state
+            // Reset animation states - let framework take over
+            this.player.GetAnimatorManager().SwitchActionSubstate(0);
+            this.player.GetAnimatorManager().SwitchActionSecondarySubstate(0);
+            
             if (this.player.GetGrounded())
             {
-                // On ground - let normal ground animation take over
                 this.player.GetAnimatorManager().SwitchSubstate(SubState.Moving);
-                this.player.GetAnimatorManager().SwitchActionSubstate(0);
-                this.player.GetAnimatorManager().SwitchActionSecondarySubstate(0);
-            }
-            else
-            {
-                // IMPORTANT: In air and falling - play Fall animation explicitly
-                // Reset all action states first
-                this.player.GetAnimatorManager().SwitchActionSubstate(0);
-                this.player.GetAnimatorManager().SwitchActionSecondarySubstate(0);
-                // Then play the fall animation
-                this.player.GetAnimatorManager().PlayAnimation(ANIM_FALL);
             }
 
             if (this.showDebugLog)
             {
-                Debug.Log("VelocityCore: AIR BOOST ENDED - " + reason + " | Grounded=" + this.player.GetGrounded() + " | Playing Fall animation");
+                Debug.Log("VelocityCore: AIR BOOST ENDED - " + reason + " | Grounded=" + this.player.GetGrounded());
             }
         }
     }

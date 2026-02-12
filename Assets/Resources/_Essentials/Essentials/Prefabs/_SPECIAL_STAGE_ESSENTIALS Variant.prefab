@@ -954,7 +954,7 @@ PrefabInstance:
     - target: {fileID: 6039137968080674562, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
       propertyPath: currentSceneData.name
-      value: TEST SCENE
+      value: Quasar Tunnels
       objectReference: {fileID: 0}
     - target: {fileID: 6039137968080674562, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}

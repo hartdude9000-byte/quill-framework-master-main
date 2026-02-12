@@ -21,7 +21,21 @@ public class DropDash : HedgeSubAction
     private Vector2 dropDashDustOffset = new Vector2(-13, 0);
 
     private IEnumerator dropDashCoroutine;
-    public override void Start() => base.Start();
+    
+    public override void Start()
+    {
+        base.Start();
+        // Ensure parentAction is set to the Jump action
+        if (this.parentAction == null)
+        {
+            Jump jumpAction = this.player.GetActionManager().GetAction<Jump>() as Jump;
+            if (jumpAction != null)
+            {
+                this.parentAction = jumpAction;
+            }
+        }
+    }
+    
     /// <summary>
     /// Mainly used to set the defaults
     /// </summary>
@@ -31,11 +45,26 @@ public class DropDash : HedgeSubAction
         this.actionID = 1.1f;
         this.parentAction = this.GetComponentInParent<Jump>();
     }
+    
     /// <summary>
     /// Can only perform the dropdash while jumping and only if the Jump sub action has not been used up
     /// </summary>
     public override bool CanPerformAction()
     {
+        // Ensure parentAction is set
+        if (this.parentAction == null)
+        {
+            Jump jumpAction = this.player.GetActionManager().GetAction<Jump>() as Jump;
+            if (jumpAction != null)
+            {
+                this.parentAction = jumpAction;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         if (this.player.GetActionManager().CheckActionIsBeingPerformed<Jump>() && this.parentAction.usedSubAction == false
             && (this.player.GetHedgePowerUpManager().GetShieldPowerUp().GetShieldType() == ShieldType.None ||
             this.player.GetHedgePowerUpManager().GetShieldPowerUp().GetShieldType() == ShieldType.RegularShield))
@@ -44,6 +73,7 @@ public class DropDash : HedgeSubAction
         }
         return false;
     }
+    
     /// <summary>
     /// Waits untill the user inputs the jump button again before running the action
     /// </summary>
@@ -56,6 +86,7 @@ public class DropDash : HedgeSubAction
 
         return false;
     }
+    
     /// <summary>
     /// Prepares the dropdash animation and timer
     /// </summary>
@@ -66,8 +97,8 @@ public class DropDash : HedgeSubAction
         this.startDropDashDirection = this.dropDashDirection;
         this.dropDashCoroutine = this.DropDashCountdown();
         this.StartCoroutine(this.dropDashCoroutine);
-
     }
+    
     /// <summary>
     /// After adding velocity to the jump move check for variable jump
     /// </summary>
@@ -79,6 +110,7 @@ public class DropDash : HedgeSubAction
             this.dropDashDirection = currentDirection;
         }
     }
+    
     /// <summary>
     /// Exits the dropdash when the player hits the ground
     /// </summary>
@@ -90,12 +122,17 @@ public class DropDash : HedgeSubAction
         }
         return false;
     }
+    
     /// <summary>
     /// The commands performed at the end of the drop dash action
     /// </summary>
     public override void OnActionEnd()
     {
-        this.StopCoroutine(this.dropDashCoroutine);
+        if (this.dropDashCoroutine != null)
+        {
+            this.StopCoroutine(this.dropDashCoroutine);
+        }
+        
         //If the dropdash was fully charged at the end apply the velocity
         if (this.dropDashFullyCharged && this.player.GetGrounded())
         {
@@ -115,14 +152,24 @@ public class DropDash : HedgeSubAction
                 }
             }
             this.player.GetAnimatorManager().SwitchSubstate(SubState.Moving);
-            this.player.groundVelocity = Mathf.Clamp(this.player.groundVelocity, -this.maxDropDashVelocity, this.maxDropDashVelocity);//Limit
+            this.player.groundVelocity = Mathf.Clamp(this.player.groundVelocity, -this.maxDropDashVelocity, this.maxDropDashVelocity);
             this.player.velocity = this.player.CalculateSlopeMovement(this.player.groundVelocity);
             HedgehogCamera.Instance().GetCameraLookHandler().BeginDashLag();
             Vector2 dustEffectPosition = (Vector2)this.player.transform.position + (this.dropDashDustOffset * this.dropDashDirection);
             GameObject dustEffect = GMSpawnManager.Instance().SpawnGameObject(ObjectToSpawn.DropDashDust, dustEffectPosition);
             dustEffect.transform.localScale = new Vector3(this.dropDashDirection, 1, 1);
             GMAudioManager.Instance().PlayOneShot(this.player.GetPlayerActionAudio().spindashRelease);
-            this.player.GetActionManager().PerformAction<Roll>();//Switch to the roll action at the end of the drop dash
+            
+            // Only switch to Roll if the action exists
+            if (this.player.GetActionManager().GetAction<Roll>() != null)
+            {
+                this.player.GetActionManager().PerformAction<Roll>();
+            }
+            else
+            {
+                // Reset action state if Roll doesn't exist
+                this.player.GetAnimatorManager().SwitchActionSubstate(0);
+            }
         }
         else if (this.player.GetGrounded())
         {
@@ -130,6 +177,9 @@ public class DropDash : HedgeSubAction
         }
 
         this.player.GetAnimatorManager().SwitchActionSecondarySubstate(0);
+        
+        // Reset dropDashFullyCharged for next use
+        this.dropDashFullyCharged = false;
     }
 
 
@@ -140,7 +190,7 @@ public class DropDash : HedgeSubAction
     {
         yield return new WaitForSeconds(General.StepsToSeconds(this.dropDashChargeTime));
         this.dropDashFullyCharged = true;
-        this.player.GetAnimatorManager().SwitchActionSecondarySubstate(this.subAnimationID);//Switch to the drop dash animation on sucess
+        this.player.GetAnimatorManager().SwitchActionSecondarySubstate(this.subAnimationID);
         GMAudioManager.Instance().PlayOneShot(this.player.GetPlayerActionAudio().dropDash);
     }
 }

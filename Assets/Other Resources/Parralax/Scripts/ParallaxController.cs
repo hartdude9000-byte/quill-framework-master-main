@@ -22,6 +22,9 @@ public class ParallaxController : MonoBehaviour
     [Tooltip("The bottom most point of the zone at the start")]
     private float currentBottomZoneBorder;
 
+    [Tooltip("Vertical offset applied when parallax is reset mid-level")]
+    private float verticalOffset = 0f;
+
     [Tooltip("The current background or set of backgrounds to be parallaxed")]
     public Transform background;
     [SerializeField, Tooltip("The clone of the parallax used to allow seemless scrolling typically only 1 clone is needed")]
@@ -55,6 +58,20 @@ public class ParallaxController : MonoBehaviour
     }
 
     public void UpdateParallaxPosition() => this.CalculateParallaxPosition();
+
+    /// <summary>
+    /// Resets the vertical position offset for the parallax background
+    /// <param name="newOffset">The new vertical offset to apply</param>
+    /// </summary>
+    public void ResetVerticalPosition(float newOffset)
+    {
+        this.verticalOffset = newOffset;
+    }
+
+    /// <summary>
+    /// Gets the current vertical offset
+    /// </summary>
+    public float GetVerticalOffset() => this.verticalOffset;
 
     /// <summary>
     /// Creates a clone of the current background which is used for semless tiling
@@ -103,7 +120,7 @@ public class ParallaxController : MonoBehaviour
             position.x = (leftCameraBorder + this.currentLeftZoneBorder) * this.parallaxFactor.x;
             position.x = leftCameraBorder + ((Mathf.RoundToInt(position.x - leftCameraBorder) - this.currentLeftZoneBorder) % this.parallaxSize.x);
             position.x += this.parallaxSize.x / 2;
-            position.y = HedgehogCamera.Instance().GetBounds().max.y * this.parallaxFactor.y;
+            position.y = (HedgehogCamera.Instance().GetBounds().max.y * this.parallaxFactor.y) + this.verticalOffset;
         }
         else
         {

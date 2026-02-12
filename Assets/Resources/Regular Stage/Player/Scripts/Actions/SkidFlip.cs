@@ -20,15 +20,22 @@ public class SkidFlip : HedgeSubAction
         this.actionID = 4.1f;
         this.parentAction = this.GetComponentInParent<Skidding>();
         this.skidding = this.GetComponentInParent<Skidding>();
-        this.skidding.skidFlip = this;
+        if (this.skidding != null)
+        {
+            this.skidding.skidFlip = this;
+        }
         base.Reset();
     }
 
     /// <summary>
-    /// The parameter s that must be smet before the skid flip can be considered
+    /// The parameters that must be met before the skid flip can be considered
     /// </summary>
     public override bool CanPerformAction()
     {
+        if (this.skidding == null)
+        {
+            return false;
+        }
 
         if (this.player.GetActionManager().CheckActionIsBeingPerformed<Skidding>() && this.skidding.usedSubAction == false)
         {
@@ -73,7 +80,7 @@ public class SkidFlip : HedgeSubAction
         return false;
     }
     /// <summary>
-    /// Ends the skid flip and sets the player to the necessary state where possibe
+    /// Ends the skid flip and sets the player to the necessary state where possible
     /// </summary>
     public override void OnActionEnd()
     {
