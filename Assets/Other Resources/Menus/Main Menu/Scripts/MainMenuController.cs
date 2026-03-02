@@ -141,7 +141,7 @@ public class MainMenuController : MonoBehaviour
         {
             this.backButtonUI.SetActive(this.currentNodeData.backButton);
             this.confirmButtonUI.SetActive(this.currentNodeData.confirmButton);
-            this.deleteButtonUI.SetActive(this.currentNodeData.deleteButton);
+            this.deleteButtonUI.SetActive(false); // Delete button disabled in character select mode
             this.gameOptionsButtonUI.SetActive(this.currentNodeData.debugButton);
         }
     }
@@ -183,15 +183,11 @@ public class MainMenuController : MonoBehaviour
     }
 
     /// <summary>
-    /// When the delete button is pressed delete the current slot
+    /// Delete button input is disabled - no save slots to delete in character select mode
     /// </summary
     public void OnDeleteButtonInput()
     {
-        if (this.currentNodeData.deleteButton && this.deleteButtonUI.activeSelf)
-        {
-            this.saveController.SetSlotButtonsInteractable(false);
-            this.confirmationOption.SetConfirmation(this.mainMenuEventSystem, this.saveController.DeleteCurrentSlot, null, this.OnDeleteSaveConfrimationCloseMenu);
-        }
+        // No-op: delete functionality removed for character select mode
     }
 
     /// <summary>
@@ -206,21 +202,13 @@ public class MainMenuController : MonoBehaviour
     }
 
     /// <summary>
-    /// When user hits the up button check to update the character for a save slot
+    /// When user hits the up/down button cycle through characters on the character select
     /// <param name="direction">the direction of the user input </param>
     /// </summary
     public void OnMenuDirectionalInput(Vector2 direction)
     {
-        if (this.gameOptionsButtonUI.activeSelf)
-        {
-            this.saveController.CycleCharacter((int)direction.y);
-        }
+        this.saveController.CycleCharacter((int)direction.y);
     }
-
-    /// <summary>
-    /// When the confirmation menu is closed for the delete menu operation
-    /// </summary
-    private void OnDeleteSaveConfrimationCloseMenu() => this.saveController.OnDeleteSaveConfrimationCloseMenu();
 
     /// <summary>
     /// Set the event sytstem target to the specified gameobject
@@ -231,7 +219,7 @@ public class MainMenuController : MonoBehaviour
     /// <summary>
     /// Waits a set amount of time before performing the specified action
     /// <param name="time">The time waited before the action is launched </param>
-    /// <param name="methodToCall">The method to be called when the time has run oout</param>
+    /// <param name="methodToCall">The method to be called when the time has run ooot</param>
     /// </summary>
     private IEnumerator DelayButtonAction(float time, MethodToCall methodToCall)
     {

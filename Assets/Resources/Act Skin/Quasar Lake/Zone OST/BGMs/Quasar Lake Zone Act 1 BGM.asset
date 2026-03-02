@@ -27,17 +27,15 @@ MonoBehaviour:
         endTime: {x: 0, y: 43, z: 14}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
       loopSection:
         startTime: {x: 0, y: 44, z: 18}
         endTime: {x: 3, y: 28, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 1
   - name: Boss Theme
     soundTag: 6
     priority: 0
-    clip: {fileID: 8300000, guid: c114cf372bd7a1841854882cd684da31, type: 3}
+    clip: {fileID: 8300000, guid: ef31e90d38924a54aa9717ab88e70a9a, type: 3}
     volume: 1
     pitch: 1
     loopType: 1
@@ -48,13 +46,11 @@ MonoBehaviour:
         endTime: {x: 0, y: 59, z: 22}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
       loopSection:
         startTime: {x: 0, y: 59, z: 2}
         endTime: {x: 2, y: 23, z: 2}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
   - name: Act Clear Jingle
     soundTag: 1
     priority: 2
@@ -69,13 +65,11 @@ MonoBehaviour:
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
       loopSection:
         startTime: {x: 0, y: 0, z: 0}
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
   - name: Invincibility Theme
     soundTag: 3
     priority: 1
@@ -90,13 +84,11 @@ MonoBehaviour:
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
       loopSection:
         startTime: {x: 0, y: 0, z: 0}
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
   - name: Drowning Theme
     soundTag: 2
     priority: 2
@@ -111,13 +103,11 @@ MonoBehaviour:
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
       loopSection:
         startTime: {x: 0, y: 0, z: 0}
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
   - name: Power Sneakers
     soundTag: 4
     priority: 1
@@ -132,13 +122,11 @@ MonoBehaviour:
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
       loopSection:
         startTime: {x: 0, y: 0, z: 0}
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
   - name: Extra Life Jingle
     soundTag: 5
     priority: 3
@@ -153,13 +141,11 @@ MonoBehaviour:
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
       loopSection:
         startTime: {x: 0, y: 0, z: 0}
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
   - name: Super Form Theme
     soundTag: 7
     priority: 2
@@ -174,10 +160,8 @@ MonoBehaviour:
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0
       loopSection:
         startTime: {x: 0, y: 0, z: 0}
         endTime: {x: 0, y: 0, z: 0}
         audioClip: {fileID: 0}
         audioSource: {fileID: 0}
-        clipPlaying: 0

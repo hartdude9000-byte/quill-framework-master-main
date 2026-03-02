@@ -38,7 +38,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ef31e90d38924a54aa9717ab88e70a9a, type: 3}
     volume: 0.782
     pitch: 1
-    loopType: 0
+    loopType: 1
     audioSource: {fileID: 0}
     BGMAudioData:
       introSection:

@@ -34,8 +34,6 @@ public class MainMenuSaveSlotController : MonoBehaviour, ISubmitHandler, ISelect
     [SerializeField]
     private bool isCorrupted = false;
 
-    private IEnumerator scrollToPositionCoroutine;
-
     private void Reset() => this.animator = this.GetComponent<Animator>();
 
     private void Start()
@@ -53,60 +51,19 @@ public class MainMenuSaveSlotController : MonoBehaviour, ISubmitHandler, ISelect
     private void Update() => this.UpdateSlotDataUI();
 
     /// <summary>
-    /// Updates the save slot data UI that changes based on <see cref="hasSaveData"/>
+    /// Updates the save slot data UI - always shows the character select (new save) state
     /// </summary>
     private void UpdateSlotDataUI()
     {
-        //Once we have identified a save file as corrupted it must be deleted before proceeding
-        if (this.GetIsCorrupted())
+        this.newSaveSlotState.SetDisplayState(this.playerData, true);
+        this.existingSaveSlotState.SetDisplayState(this.playerData, false);
+        this.actsClearedSaveSlotState.SetDisplayState(this.playerData, false);
+        this.curruptedSaveSlotState.SetDisplayState(this.playerData, false);
+
+        // Set the playerdata current scene to the first scene in the stage scene list
+        if (GMSceneManager.Instance().GetSceneList().stageScenes.Count > 0)
         {
-            this.playerData.SetChaosEmeralds(0);
-            this.playerData.SetLives(0);
-            this.curruptedSaveSlotState.SetDisplayState(this.playerData, true);
-            this.newSaveSlotState.SetDisplayState(this.playerData, false);
-            this.existingSaveSlotState.SetDisplayState(this.playerData, false);
-            this.actsClearedSaveSlotState.SetDisplayState(this.playerData, false);
-
-            return;
-        }
-
-        try
-        {
-            if (this.hasSaveData == false)
-            {
-                this.newSaveSlotState.SetDisplayState(this.playerData, true);
-                this.existingSaveSlotState.SetDisplayState(this.playerData, false);
-                this.actsClearedSaveSlotState.SetDisplayState(this.playerData, false);
-                this.curruptedSaveSlotState.SetDisplayState(this.playerData, false);
-                //Set the playerdata to current stage to the first scene in the stage scene list
-                if (GMSceneManager.Instance().GetSceneList().stageScenes.Count > 0)
-                {
-                    this.playerData.SetCurrentScene(GMSceneManager.Instance().GetSceneList().stageScenes[0]);
-                }
-
-                return;
-            }
-
-
-            this.newSaveSlotState.SetDisplayState(this.playerData, false);
-
-            if (this.playerData.GetAllActsCleared())
-            {
-                this.existingSaveSlotState.SetDisplayState(this.playerData, false);
-                this.actsClearedSaveSlotState.SetDisplayState(this.playerData, true);
-            }
-            else
-            {
-                this.actsClearedSaveSlotState.SetDisplayState(this.playerData, false);
-                this.existingSaveSlotState.SetDisplayState(this.playerData, true);
-            }
-
-            this.curruptedSaveSlotState.SetDisplayState(this.playerData, false);
-        }
-        catch (Exception exception)
-        {
-            this.SetIsCorrupted(true);
-            General.LogErrorMessage(exception, ErrorCode.CorruptedSaveData, "On Save Slot: " + this.GetSaveSlotID());
+            this.playerData.SetCurrentScene(GMSceneManager.Instance().GetSceneList().stageScenes[0]);
         }
     }
 
@@ -160,21 +117,6 @@ public class MainMenuSaveSlotController : MonoBehaviour, ISubmitHandler, ISelect
     public int GetSaveSlotID() => this.saveSlotId;
 
     /// <summary>
-    /// Starts a coroutine that moves the slots to the target position
-    /// <param name="targetPosition"> The slot position to move towards</param>
-    /// </summary>
-    public void ScrollToPosition(Vector2 targetPosition)
-    {
-        if (this.scrollToPositionCoroutine != null)
-        {
-            this.StopCoroutine(this.scrollToPositionCoroutine);
-        }
-
-        this.scrollToPositionCoroutine = this.SmoothScroll(targetPosition);
-        this.StartCoroutine(this.scrollToPositionCoroutine);
-    }
-
-    /// <summary>
     /// Cycles to the next character in the save slot
     /// </summary>
     public void GetNextCharacter()
@@ -212,24 +154,6 @@ public class MainMenuSaveSlotController : MonoBehaviour, ISubmitHandler, ISelect
     }
 
     /// <summary>
-    /// Moves the slots smoothly towards their target position
-    /// <param name="targetPosition"> The slot position to move towards</param>
-    /// </summary>
-    private IEnumerator SmoothScroll(Vector2 targetPosition)
-    {
-        Vector2 currentPosition = this.transform.localPosition;
-
-        while ((Vector2)this.transform.localPosition != targetPosition)
-        {
-            this.transform.localPosition = Vector3.MoveTowards(this.transform.localPosition, targetPosition, this.saveController.GetCycleSpeed() * Time.deltaTime);
-
-            yield return new WaitForFixedUpdate();
-        }
-
-        yield return null;
-    }
-
-    /// <summary>
     /// Get the <see cref="isCorrupted"/> value
     /// </summary>
     public bool GetIsCorrupted() => this.isCorrupted;
@@ -239,4 +163,3 @@ public class MainMenuSaveSlotController : MonoBehaviour, ISubmitHandler, ISelect
     /// </summary>
     public void SetIsCorrupted(bool isCorrupted) => this.isCorrupted = isCorrupted;
 }
-

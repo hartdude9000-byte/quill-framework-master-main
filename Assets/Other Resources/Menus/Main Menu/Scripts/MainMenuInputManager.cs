@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem;
 /// <summary>
 ///Handles the input of the main menu system
-///Like the back button or delete button input
+///Like the back button input
 /// </summary>
 [RequireComponent(typeof(MainMenuController))]
 public class MainMenuInputManager : MonoBehaviour
@@ -20,7 +20,6 @@ public class MainMenuInputManager : MonoBehaviour
 
         this.mainMenuMaster = new MenuInputMaster();
         this.mainMenuMaster.UI.Cancel.started += ctx => this.BackButtonPressed(ctx.phase);//When the back button is pressed
-        this.mainMenuMaster.UI.Delete.started += ctx => this.DeleteButtonPressed(ctx.phase);//When the delete button is pressed
         this.mainMenuMaster.UI.GameOptions.started += ctx => this.GameOptionsButtonPressed(ctx.phase);//When the gameoptions button is pressed
         this.mainMenuMaster.UI.Navigate.performed += ctx => this.NavigationButtonPressed(ctx.phase, ctx.ReadValue<Vector2>());
         this.mainMenuMaster.Enable();
@@ -51,18 +50,6 @@ public class MainMenuInputManager : MonoBehaviour
     }
 
     /// <summary>
-    /// The moment the delete button is interacted with
-    /// <param name="phase">The phase of the input</param>
-    /// </summary>
-    private void DeleteButtonPressed(InputActionPhase phase)
-    {
-        if (phase == InputActionPhase.Started)
-        {
-            this.mainMenuController.OnDeleteButtonInput();
-        }
-    }
-
-    /// <summary>
     /// The moment the game options button is interacted with
     /// <param name="phase">The phase of the input</param>
     /// </summary>
@@ -75,7 +62,7 @@ public class MainMenuInputManager : MonoBehaviour
     }
 
     /// <summary>
-    /// The moment the directional input is pressed 
+    /// The moment the directional input is pressed
     /// <param name="phase">The phase of the input</param>
     /// <param name="direction">The direction the user is inputting in</param>
     /// </summary>

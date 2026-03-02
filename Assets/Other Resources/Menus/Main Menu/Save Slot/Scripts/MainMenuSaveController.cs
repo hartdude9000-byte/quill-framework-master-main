@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 /// <summary>
-/// Manages the save controller menu and the respective saved items
+/// Manages the character select menu with a single hidden save slot
 /// </summary>
 public class MainMenuSaveController : MonoBehaviour
 {
@@ -30,77 +29,48 @@ public class MainMenuSaveController : MonoBehaviour
 
     private void Awake()
     {
-        this.CreateNoSaveSlot(this.activeSaveSlots.Count);
-        this.SpawnSlots();
+        this.SpawnCharacterSelectSlot();
         this.nodeData.firstSelectedButton = this.activeSaveSlots[0].gameObject;
     }
 
     /// <summary>
-    /// Spawns a set amount of slots available to the player
+    /// Spawns a single slot that acts as the character select screen
+    /// Uses SaveSlot.Slot_0 as a hidden save slot behind the scenes
     /// </summary>
-    public void SpawnSlots()
+    private void SpawnCharacterSelectSlot()
     {
-        for (int x = 0; x < GMSaveSystem.Instance().GetSaveSlotCount(); x++)
+        SaveSlot hiddenSlot = SaveSlot.Slot_0;
+        MainMenuSaveSlotController characterSelectSlot = Instantiate(this.saveSlotPrefab).GetComponent<MainMenuSaveSlotController>();
+
+        characterSelectSlot.transform.SetParent(this.transform);
+        characterSelectSlot.transform.localPosition = new Vector2(0, -4);
+        characterSelectSlot.name = "Character Select Slot";
+        characterSelectSlot.SetSaveController(this);
+        characterSelectSlot.SetSaveSlotID(0);
+
+        // Load existing save to restore last-used character, otherwise create fresh data
+        PlayerData playerData;
+
+        if (GMSaveSystem.Instance().SaveExists(hiddenSlot))
         {
-            SaveSlot currentSaveSlot = (SaveSlot)x;
-
-            if (currentSaveSlot == SaveSlot.NoSave)
+            try
             {
-                continue;
+                playerData = GMSaveSystem.Instance().LoadPlayerData(hiddenSlot);
             }
-
-            MainMenuSaveSlotController newSaveSlot = Instantiate(this.saveSlotPrefab).GetComponent<MainMenuSaveSlotController>();
-
-            newSaveSlot.transform.SetParent(this.transform);//parent to the this object
-            Vector2 saveSlotLocalPosition = new Vector2(0, 0);
-            saveSlotLocalPosition += new Vector2(x * this.menuItemPadding, -4);//apply padding to position
-            newSaveSlot.transform.localPosition = saveSlotLocalPosition;
-            newSaveSlot.name = this.saveSlotPrefab.name + " - " + x;
-            newSaveSlot.SetSaveController(this);
-            newSaveSlot.SetSaveSlotID(x);
-            this.activeSaveSlots.Add(newSaveSlot);
-
-            if (GMSaveSystem.Instance().SaveExists(currentSaveSlot))
+            catch
             {
-                newSaveSlot.SetHasSaveData(true);
-
-                try
-                {
-                    newSaveSlot.SetPlayerData(GMSaveSystem.Instance().LoadPlayerData(currentSaveSlot));
-                }
-                catch (Exception exception)
-                {
-                    General.LogErrorMessage(exception, ErrorCode.CorruptedSaveData, "On Save Slot: " + newSaveSlot.GetSaveSlotID());
-                    newSaveSlot.SetIsCorrupted(true);
-                }
-
-                continue;
+                playerData = new PlayerData(hiddenSlot);
             }
-
-            newSaveSlot.SetHasSaveData(false);
-            newSaveSlot.SetPlayerData(new PlayerData(currentSaveSlot));
         }
-    }
+        else
+        {
+            playerData = new PlayerData(hiddenSlot);
+        }
 
-    /// <summary>
-    /// Creates a save slot that does not save user data
-    /// <param name="slotsCreated"> The number of slots created prior to this one</param>
-    /// </summary>
-    public void CreateNoSaveSlot(int slotsCreated)
-    {
-        MainMenuSaveSlotController noSaveSlot = Instantiate(this.noSaveSlotPrefab).GetComponent<MainMenuSaveSlotController>();
-
-        noSaveSlot.transform.SetParent(this.transform);//parent to the this object
-        Vector2 noSaveSlotLocalPosition = new Vector2(0, 0);
-        noSaveSlotLocalPosition += new Vector2(slotsCreated * this.menuItemPadding, -4);//apply padding to position
-        noSaveSlot.transform.localPosition = noSaveSlotLocalPosition;
-        noSaveSlot.name = "No Save Slot";
-        noSaveSlot.SetSaveController(this);
-        noSaveSlot.SetSaveSlotID((int)SaveSlot.NoSave);
-        noSaveSlot.SetHasSaveData(false);
-        noSaveSlot.SetPlayerData(new PlayerData(SaveSlot.NoSave));
-
-        this.activeSaveSlots.Add(noSaveSlot);
+        // Always show as "new save" state so the character selector is displayed
+        characterSelectSlot.SetHasSaveData(false);
+        characterSelectSlot.SetPlayerData(playerData);
+        this.activeSaveSlots.Add(characterSelectSlot);
     }
 
     private void OnDisable()
@@ -109,18 +79,6 @@ public class MainMenuSaveController : MonoBehaviour
         {
             this.activeSaveSlots[x].transform.localPosition = new Vector2(x * this.menuItemPadding, this.verticalPosition);
         }
-    }
-
-    /// <summary>
-    /// Deletes the current slot
-    /// </summary>
-    public void DeleteCurrentSlot()
-    {
-        GMSaveSystem.Instance().DeleteSaveSlot(this.activeSaveSlots[this.currentSaveSlotId].GetPlayerData().GetSaveSlot());
-        this.activeSaveSlots[this.currentSaveSlotId].SetHasSaveData(false);
-        this.activeSaveSlots[this.currentSaveSlotId].SetIsCorrupted(false);
-        this.activeSaveSlots[this.currentSaveSlotId].SetPlayerData(new PlayerData(this.activeSaveSlots[this.currentSaveSlotId].GetPlayerData().GetSaveSlot()));//Reload the empty slot id
-        this.SetSlotButtonsInteractable(false);
     }
 
     /// <summary>
@@ -161,47 +119,33 @@ public class MainMenuSaveController : MonoBehaviour
     }
 
     /// <summary>
-    /// When the slots are reactivated after interaction with the confrimation menu
-    /// </summary>
-    public void OnDeleteSaveConfrimationCloseMenu()
-    {
-        this.SetSlotButtonsInteractable(true);
-        this.mainMenuController.SetEventSystemTarget(this.activeSaveSlots[this.currentSaveSlotId].gameObject);
-        this.activeSaveSlots[this.currentSaveSlotId].GetAnimator().SetTrigger("Normal");
-        this.activeSaveSlots[this.currentSaveSlotId].GetAnimator().SetTrigger("Selected");
-    }
-
-    /// <summary>
     /// Gets the current cycle speed of all the slots
     /// </summary>
     public float GetCycleSpeed() => this.cycleSpeed;
 
     /// <summary>
-    /// Performs the on slot submit action
+    /// Performs the on slot submit action - saves character choice and loads the first stage
     /// <param name="saveSlot"> The save slot to load</param>
     /// </summary>
     public void OnSaveSlotSubmit(MainMenuSaveSlotController saveSlot)
     {
-        if (saveSlot.GetIsCorrupted())
+        PlayerData playerData = saveSlot.GetPlayerData();
+
+        // Ensure the scene is set to the first stage
+        if (GMSceneManager.Instance().GetSceneList().stageScenes.Count > 0)
         {
-            return;
+            playerData.SetCurrentScene(GMSceneManager.Instance().GetSceneList().stageScenes.First(x => x.GetSceneType() == SceneType.RegularStage));
         }
 
-        if (saveSlot.GetPlayerData().GetSaveSlot() != SaveSlot.NoSave && GMSaveSystem.Instance().SaveExists(saveSlot.GetPlayerData().GetSaveSlot()) == false)
+        // Save the character selection behind the scenes using Slot_0
+        GMSaveSystem.Instance().SetSaveSlot(SaveSlot.Slot_0);
+
+        if (GMSaveSystem.Instance().SaveExists(SaveSlot.Slot_0) == false)
         {
-            GMSaveSystem.Instance().CreateNewSave(saveSlot.GetPlayerData());
+            GMSaveSystem.Instance().CreateNewSave(playerData);
         }
 
-        //If we are on the last stage cycle back to the first regular stage if the last stages has been completed
-        if (saveSlot.GetPlayerData().GetAllActsCleared() && saveSlot.GetPlayerData().HasClearedLastAct())
-        {
-            saveSlot.GetPlayerData().SetCurrentScene(GMSceneManager.Instance().GetSceneList().stageScenes.First(x => x.GetSceneType() == SceneType.RegularStage));
-            saveSlot.GetPlayerData().GetClearedActs().Clear();
-        }
-
-        GMSaveSystem.Instance().SetSaveSlot(saveSlot.GetPlayerData().GetSaveSlot());
-        GMSaveSystem.Instance().LoadPlayerData(saveSlot.GetPlayerData().GetSaveSlot());
-        GMSaveSystem.Instance().SetCurrentPlayerData(saveSlot.GetPlayerData());
+        GMSaveSystem.Instance().SetCurrentPlayerData(playerData);
         GMStageManager.Instance().SetOnSaveSlotGameLoad(true);
         GMSaveSystem.Instance().SaveAndOverwriteData();
         GMHistoryManager.Instance().ClearHistory();
@@ -210,20 +154,15 @@ public class MainMenuSaveController : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates the positioning of all the slots when a slot is selected
-    /// <param name="saveSlot"> The save slot to highlighted</param>
+    /// Updates button visibility when the character select slot is highlighted
+    /// <param name="saveSlot"> The save slot highlighted</param>
     /// </summary>
     public void OnSaveSlotHighlighted(MainMenuSaveSlotController saveSlot)
     {
-        for (int x = 0; x < this.activeSaveSlots.Count; x++)
-        {
-            this.activeSaveSlots[x].ScrollToPosition(new Vector2(112 * (this.activeSaveSlots[x].GetSaveSlotID() - saveSlot.GetSaveSlotID()), this.activeSaveSlots[x].transform.localPosition.y));
-        }
-
         this.mainMenuController.OnButtonChange();
-        this.currentSaveSlotId = saveSlot.GetSaveSlotID();
-        this.mainMenuController.GetDeleteButtonUI().SetActive(GMSaveSystem.Instance().SaveExists(saveSlot.GetPlayerData().GetSaveSlot()) || saveSlot.GetIsCorrupted());
-        this.mainMenuController.GetConfirmButtonUI().SetActive(saveSlot.GetIsCorrupted() == false);
-        this.mainMenuController.GetGameOptionsButtonUI().SetActive(!GMSaveSystem.Instance().SaveExists(saveSlot.GetPlayerData().GetSaveSlot()));
+        this.currentSaveSlotId = 0;
+        this.mainMenuController.GetDeleteButtonUI().SetActive(false);
+        this.mainMenuController.GetConfirmButtonUI().SetActive(true);
+        this.mainMenuController.GetGameOptionsButtonUI().SetActive(true);
     }
 }

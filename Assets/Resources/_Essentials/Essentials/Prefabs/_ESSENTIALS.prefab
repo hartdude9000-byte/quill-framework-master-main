@@ -160,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 2317540613180645736, guid: f0fa000d897c36444b363633ddb7b779,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2317540613416355117, guid: f0fa000d897c36444b363633ddb7b779,
         type: 3}
@@ -928,33 +928,32 @@ PrefabInstance:
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: currentSceneData.name
-      value: Quasar Tunnels
+      value: Framework Scene
       objectReference: {fileID: 0}
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: currentSceneData.sceneId
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
-        type: 3}
-      propertyPath: currentSceneData.actNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
+      propertyPath: currentSceneData.actNumber
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
+        type: 3}
       propertyPath: currentSceneData.sceneType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: currentSceneData.thumbnail
       value: 
-      objectReference: {fileID: 21300000, guid: b1e9db8307574e240b00dd828587f8e4,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: currentSceneData.nextSceneId
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4983877011506462232, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}

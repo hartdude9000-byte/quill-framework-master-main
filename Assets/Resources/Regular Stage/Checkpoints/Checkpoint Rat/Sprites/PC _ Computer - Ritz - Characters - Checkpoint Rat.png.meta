@@ -1,0 +1,418 @@
+fileFormatVersion: 2
+guid: 4cb21b00899e2ac41bfb2c1a479cb5ba
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 148
+        width: 31
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4814815}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1907a48ddb39464ca90578738de4353
+      internalID: -1489396716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 148
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.51666665, y: 0.43333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde793834f4be964caa128079033132e
+      internalID: -1837770398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 148
+        width: 31
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4814815}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1919d4402d02b994bb89c8b41aec5611
+      internalID: -1415829959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_3
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 148
+        width: 31
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ceaf5e64f086b4f8ebc2659585e7f8
+      internalID: 2041170197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 91
+        width: 31
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4814815}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9f8f48425d657345b45964891ee6b84
+      internalID: 1512144494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_5
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 91
+        width: 32
+        height: 30
+      alignment: 9
+      pivot: {x: 0.484375, y: 0.43333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe29c55878c66d543bbd03cc38926a6b
+      internalID: -86818248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_6
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 91
+        width: 32
+        height: 27
+      alignment: 9
+      pivot: {x: 0.484375, y: 0.4814815}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc6305759073bbb4788cab1a2e023ba7
+      internalID: -1298204228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_7
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 91
+        width: 31
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 418a5778152ea97408a8332c8e13db65
+      internalID: -2095971723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_8
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 91
+        width: 31
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.43333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ff95ebdc049684e872763b2ccc3f73
+      internalID: -248989218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_9
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 91
+        width: 31
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4814815}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab8307aa868caa645a6b7f57ae328666
+      internalID: -2009794847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Ritz - Characters - Checkpoint Rat_10
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 91
+        width: 32
+        height: 26
+      alignment: 9
+      pivot: {x: 0.484375, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b71d26e670b602f45a1cb9bbd0abaded
+      internalID: -146907564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_50: -1913802405
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_75: 891796488
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_30: 1209393706
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_41: 464187460
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_56: 1215688150
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_34: -1873995799
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_31: 993821289
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_81: 1982177215
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_16: -584775119
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_3: 2041170197
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_21: -329286176
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_55: -867306758
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_78: 386493349
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_59: -898661488
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_69: 1961335348
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_12: 1395000419
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_1: -1837770398
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_72: -1295000108
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_82: -1935865784
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_22: -2057805546
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_62: 137735628
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_35: -1191567835
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_48: 61295564
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_7: -2095971723
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_60: -2007548854
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_77: 1882253905
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_2: -1415829959
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_76: -2072733224
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_49: -1902045697
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_33: 455649268
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_43: 1530744956
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_63: 649578394
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_79: -2086144779
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_36: 1394849629
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_45: 1209374320
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_0: -1489396716
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_58: -1339041482
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_8: -248989218
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_37: 2105774884
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_70: 1394040710
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_64: 536670140
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_51: -883209458
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_46: 814191209
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_14: -2136917038
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_42: -1416574566
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_53: -596046982
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_17: -977682920
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_10: -146907564
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_68: -409469059
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_4: 1512144494
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_73: -451065046
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_9: -2009794847
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_6: -1298204228
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_20: 451546394
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_54: -877541540
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_61: -1505833444
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_5: -86818248
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_11: 1554184985
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_19: 1753449291
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_18: -672110375
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_44: -354035010
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_32: 1072845018
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_65: -1998901746
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_52: -339186200
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_57: -1861466527
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_40: 1828090504
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_71: -1967209364
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_66: 1778632805
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_13: -1002558216
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_15: -68122423
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_67: 1207724287
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_38: 1722948866
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_47: -1437902588
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_74: -725469642
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_39: -1799511947
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_80: 1428288536
+      PC _ Computer - Ritz - Characters - Checkpoint Rat_83: -1957183705
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

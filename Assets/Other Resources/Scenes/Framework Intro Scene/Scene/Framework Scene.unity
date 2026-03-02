@@ -218,7 +218,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.40784317, b: 0.94117653, a: 1}
+      key0: {r: 0.70980394, g: 0.18823531, b: 0.9921569, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -724,7 +724,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f8661205e9ad58040940e3f151d11ce3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c085ed8e6bd9e664c84b889ae55e9745, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1130,7 +1130,12 @@ PrefabInstance:
     - target: {fileID: 2218091439113037581, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -51.56493
+      value: 54.502773
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218091439113037581, guid: 3631b242e16322c42a6afc6ac14c87be,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1020
       objectReference: {fileID: 0}
     - target: {fileID: 3149933694196078026, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
@@ -1440,7 +1445,7 @@ PrefabInstance:
     - target: {fileID: 6803147302593599062, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.07836504
+      value: 0.18010075
       objectReference: {fileID: 0}
     - target: {fileID: 6803147302593599062, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
@@ -1450,12 +1455,12 @@ PrefabInstance:
     - target: {fileID: 6803147302593599062, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.8426215
+      value: 0.638581
       objectReference: {fileID: 0}
     - target: {fileID: 6803147302593599062, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.9999999
+      value: 0.99883986
       objectReference: {fileID: 0}
     - target: {fileID: 6803147302593599063, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
