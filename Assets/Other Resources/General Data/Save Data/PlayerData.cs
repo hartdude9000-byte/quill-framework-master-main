@@ -17,7 +17,7 @@ public class PlayerData
     [SerializeField, Tooltip("The amount of lives the active player has")]
     private int lives = 3;
     [SerializeField, Tooltip("The current character selected by the player")]
-    private PlayableCharacter character = PlayableCharacter.Sonic;
+    private PlayableCharacter character = PlayableCharacter.Dash;
     [SerializeField, Tooltip("The current stage of the player")]
     private PlayerSceneData currentScene = new PlayerSceneData();
     [Range(0, 7)]
