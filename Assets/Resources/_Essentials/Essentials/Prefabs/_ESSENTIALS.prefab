@@ -160,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 2317540613180645736, guid: f0fa000d897c36444b363633ddb7b779,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2317540613416355117, guid: f0fa000d897c36444b363633ddb7b779,
         type: 3}
@@ -648,18 +648,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1041528780205010426}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3341053002027287685 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2317540613410646399, guid: f0fa000d897c36444b363633ddb7b779,
-    type: 3}
-  m_PrefabInstance: {fileID: 1041528780205010426}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3341053002073954720 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2317540613348258906, guid: f0fa000d897c36444b363633ddb7b779,
@@ -928,32 +916,33 @@ PrefabInstance:
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: currentSceneData.name
-      value: Framework Scene
+      value: Quasar Tunnels
       objectReference: {fileID: 0}
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: currentSceneData.sceneId
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: currentSceneData.actNumber
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: currentSceneData.sceneType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: currentSceneData.thumbnail
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: b1e9db8307574e240b00dd828587f8e4,
+        type: 3}
     - target: {fileID: 4613304544203903169, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: currentSceneData.nextSceneId
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4983877011506462232, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
@@ -1094,7 +1083,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreCountUI
       value: 
-      objectReference: {fileID: 3341053002027287685}
+      objectReference: {fileID: 0}
     - target: {fileID: 5594369705737844436, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: timerCountUI
@@ -1139,7 +1128,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreCountUI
       value: 
-      objectReference: {fileID: 3341053002027287685}
+      objectReference: {fileID: 0}
     - target: {fileID: 7695639296965919909, guid: 1c7d0432fb543a849b349bf06bf15b85,
         type: 3}
       propertyPath: timerCountUI

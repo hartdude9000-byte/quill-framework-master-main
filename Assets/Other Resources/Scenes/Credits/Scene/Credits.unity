@@ -623,7 +623,7 @@ PrefabInstance:
     - target: {fileID: 260095699837071811, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1553553931367459749, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
@@ -639,7 +639,12 @@ PrefabInstance:
     - target: {fileID: 2218091439113037581, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7287.8306
+      value: 24.480177
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218091439113037581, guid: 3631b242e16322c42a6afc6ac14c87be,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1020
       objectReference: {fileID: 0}
     - target: {fileID: 3149933694196078026, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
@@ -684,7 +689,7 @@ PrefabInstance:
     - target: {fileID: 3341053001973058706, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4237522566442731445, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
@@ -1192,7 +1197,7 @@ MonoBehaviour:
   credits:
     credits: []
   currentSlide: 0
-  slideInterval: 3
+  slideInterval: 10
   slideTitle: {fileID: 1024122983}
   slideBodyLayoutGroup: {fileID: 3879269413685879425}
   slideBodyPrefab: {fileID: 8213049242452573200, guid: 63d74274e006a144983a1900facd70b4,

@@ -18,10 +18,10 @@ MonoBehaviour:
     sceneType: 0
     actNumber: -1
     sceneId: 0
-    nextSceneId: 8
+    nextSceneId: 1
     thumbnail: {fileID: 0}
     actAbbreviation: 
-  - name: SAGE Intro Scene
+  - name: Act Clear Special Stage Scene
     sceneType: 0
     actNumber: -1
     sceneId: 8
@@ -44,64 +44,57 @@ MonoBehaviour:
     thumbnail: {fileID: 0}
     actAbbreviation: 
   stageScenes:
-  - name: Quasar Lake Act 1
+  - name: Quasar Tunnels
     sceneType: 2
     actNumber: 1
     sceneId: 3
     nextSceneId: 4
     thumbnail: {fileID: 21300000, guid: b1e9db8307574e240b00dd828587f8e4, type: 3}
     actAbbreviation: QLZ
-  - name: Quasar Lake Act 2
-    sceneType: 2
-    actNumber: 2
-    sceneId: 4
-    nextSceneId: 7
-    thumbnail: {fileID: 21300000, guid: b1e9db8307574e240b00dd828587f8e4, type: 3}
-    actAbbreviation: QLZ
   specialStageScenes:
-  - name: Special Stage
+  - name: Quasar Lake Act 1
     sceneType: 3
     actNumber: -1
     sceneId: 5
     nextSceneId: 6
     thumbnail: {fileID: 0}
     actAbbreviation: 
-  - name: Special Stage
+  - name: Quasar Lake Act 1
     sceneType: 3
     actNumber: -1
     sceneId: 5
     nextSceneId: 6
     thumbnail: {fileID: 0}
     actAbbreviation: 
-  - name: Special Stage
+  - name: Quasar Lake Act 1
     sceneType: 3
     actNumber: -1
     sceneId: 5
     nextSceneId: 6
     thumbnail: {fileID: 0}
     actAbbreviation: 
-  - name: Special Stage
+  - name: Quasar Lake Act 1
     sceneType: 3
     actNumber: -1
     sceneId: 5
     nextSceneId: 6
     thumbnail: {fileID: 0}
     actAbbreviation: 
-  - name: Special Stage
+  - name: Quasar Lake Act 1
     sceneType: 3
     actNumber: -1
     sceneId: 5
     nextSceneId: 6
     thumbnail: {fileID: 0}
     actAbbreviation: 
-  - name: Special Stage
+  - name: Quasar Lake Act 1
     sceneType: 3
     actNumber: -1
     sceneId: 5
     nextSceneId: 6
     thumbnail: {fileID: 0}
     actAbbreviation: 
-  - name: Special Stage
+  - name: Quasar Lake Act 1
     sceneType: 3
     actNumber: -1
     sceneId: 5
@@ -109,7 +102,7 @@ MonoBehaviour:
     thumbnail: {fileID: 0}
     actAbbreviation: 
   specialStageActClearScene:
-    name: Act Clear Special Stage Scene
+    name: Quasar Lake Act 2
     sceneType: 4
     actNumber: -1
     sceneId: 6

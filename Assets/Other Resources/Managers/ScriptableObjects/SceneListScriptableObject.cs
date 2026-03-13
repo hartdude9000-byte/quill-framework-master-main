@@ -26,10 +26,10 @@ public class SceneListScriptableObject : ScriptableObject
     {
         Dictionary<int, string> scenes = this.LoadGameScenes();
         this.introScenes = this.SetSceneNames(scenes, this.introScenes);
-        this.menuScene.name = scenes[this.menuScene.GetSceneId()];
+        if (scenes.TryGetValue(this.menuScene.GetSceneId(), out string menuName)) { this.menuScene.name = menuName; }
         this.stageScenes = this.SetSceneNames(scenes, this.stageScenes);
         this.specialStageScenes = this.SetSceneNames(scenes, this.specialStageScenes);
-        this.specialStageActClearScene.name = scenes[this.specialStageActClearScene.GetSceneId()];
+        if (scenes.TryGetValue(this.specialStageActClearScene.GetSceneId(), out string actClearName)) { this.specialStageActClearScene.name = actClearName; }
     }
 
 
@@ -50,7 +50,7 @@ public class SceneListScriptableObject : ScriptableObject
             this.specialStageScenes[x].SetNextSceneId(this.specialStageActClearScene.GetSceneId());
         }
 
-        this.creditScene.SetNextSceneId(this.menuScene.GetNextSceneId());
+        this.creditScene.SetNextSceneId(this.menuScene.GetSceneId());
     }
 
     /// <summary>
@@ -79,7 +79,10 @@ public class SceneListScriptableObject : ScriptableObject
     {
         for (int x = 0; x < startScenes.Count; x++)
         {
-            startScenes[x].name = scenes[startScenes[x].GetSceneId()];
+            if (scenes.TryGetValue(startScenes[x].GetSceneId(), out string sceneName))
+            {
+                startScenes[x].name = sceneName;
+            }
         }
 
         return startScenes;

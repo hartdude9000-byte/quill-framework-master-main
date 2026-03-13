@@ -108,10 +108,25 @@ public class GMRegularStageScoreManager : ScoreManager
         this.SetRingCount(Mathf.Clamp(this.scoreData.ringCount, 0, 999));
         this.SetScoreCount(Mathf.Clamp(this.scoreData.scoreCount, 0, 999999999));
         this.SetLifeCount(Mathf.Clamp(this.scoreData.lifeCount, 0, 99));
-        this.scoreCountUI.text = this.scoreData.scoreCount.ToString();
-        this.lifeCountUI.text = this.scoreData.lifeCount.ToString();
-        this.ringCountUI.text = this.scoreData.ringCount.ToString();
-        this.timerCountUI.text = this.ConvertTimerToString(this.scoreData.timerCount);
+        if (this.scoreCountUI != null)
+        {
+            this.scoreCountUI.text = this.scoreData.scoreCount.ToString();
+        }
+
+        if (this.lifeCountUI != null)
+        {
+            this.lifeCountUI.text = this.scoreData.lifeCount.ToString();
+        }
+
+        if (this.ringCountUI != null)
+        {
+            this.ringCountUI.text = this.scoreData.ringCount.ToString();
+        }
+
+        if (this.timerCountUI != null)
+        {
+            this.timerCountUI.text = this.ConvertTimerToString(this.scoreData.timerCount);
+        }
     }
 
     /// <summary>

@@ -356,7 +356,12 @@ PrefabInstance:
     - target: {fileID: 2218091439113037581, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -200.28177
+      value: 13.069797
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218091439113037581, guid: 3631b242e16322c42a6afc6ac14c87be,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1020
       objectReference: {fileID: 0}
     - target: {fileID: 3149933694196078026, guid: 3631b242e16322c42a6afc6ac14c87be,
         type: 3}
@@ -815,24 +820,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -5
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Text
-      value: 'The following is a non profit fan based Sonic Framework.
-
-
-        Sonic
-        1, Sonic 2, Sonic 3, Sonic 3 & K and Sonic Mania are all owned by Sega.
-
-
-        Please
-        Support the official release.
-
-'
-      objectReference: {fileID: 0}
     - target: {fileID: 2998699590970630296, guid: 31e3011c325480a4f99b3a4559640191,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1929895858}
+    - target: {fileID: 7382611918266987146, guid: 31e3011c325480a4f99b3a4559640191,
+        type: 3}
+      propertyPath: m_text
+      value: "The following is a \nnon profit Sonic Framework \n\nmade in unity.\n\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382611918266987146, guid: 31e3011c325480a4f99b3a4559640191,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31e3011c325480a4f99b3a4559640191, type: 3}

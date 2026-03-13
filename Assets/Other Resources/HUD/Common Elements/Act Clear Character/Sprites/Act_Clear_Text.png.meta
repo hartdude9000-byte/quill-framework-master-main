@@ -305,8 +305,8 @@ TextureImporter:
       name: Act_Clear_Text_Sonic
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 3
+        y: 15
         width: 74
         height: 18
       alignment: 0
@@ -326,8 +326,8 @@ TextureImporter:
       name: Act_Clear_Text_Tails
       rect:
         serializedVersion: 2
-        x: 75
-        y: 0
+        x: 78
+        y: 15
         width: 70
         height: 18
       alignment: 0
@@ -347,8 +347,8 @@ TextureImporter:
       name: Act_Clear_Text_Knuckles
       rect:
         serializedVersion: 2
-        x: 146
-        y: 0
+        x: 149
+        y: 15
         width: 119
         height: 18
       alignment: 0
@@ -368,8 +368,8 @@ TextureImporter:
       name: Act_Clear_Text_Mighty
       rect:
         serializedVersion: 2
-        x: 266
-        y: 0
+        x: 269
+        y: 15
         width: 91
         height: 18
       alignment: 0
@@ -389,8 +389,8 @@ TextureImporter:
       name: Act_Clear_Text_Ray
       rect:
         serializedVersion: 2
-        x: 358
-        y: 0
+        x: 361
+        y: 15
         width: 46
         height: 18
       alignment: 0
@@ -410,8 +410,8 @@ TextureImporter:
       name: Act_Clear_Text_Got
       rect:
         serializedVersion: 2
-        x: 405
-        y: 0
+        x: 408
+        y: 15
         width: 50
         height: 18
       alignment: 0
@@ -431,8 +431,8 @@ TextureImporter:
       name: Act_Clear_Text_Through
       rect:
         serializedVersion: 2
-        x: 456
-        y: 0
+        x: 459
+        y: 15
         width: 114
         height: 18
       alignment: 0
@@ -444,6 +444,27 @@ TextureImporter:
       bones: []
       spriteID: 8eb12682dae8fcc00800000000000000
       internalID: 923113322992245736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act_Clear_Text_Dash
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1
+        width: 68
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 751478c65af808c489164e639033ede5
+      internalID: 363927711
       vertices: []
       indices: 
       edges: []
@@ -460,6 +481,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Act_Clear_Text_Mighty: 772893161541425386
+      Act_Clear_Text_Dash: 363927711
       Act_Clear_Text_Tails: -3936957271448951962
       Act_Clear_Text_Got: -2250800800171101560
       Act_Clear_Text_Through: 923113322992245736

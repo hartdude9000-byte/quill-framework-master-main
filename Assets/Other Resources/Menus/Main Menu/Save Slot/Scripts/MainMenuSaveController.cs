@@ -137,6 +137,9 @@ public class MainMenuSaveController : MonoBehaviour
             playerData.SetCurrentScene(GMSceneManager.Instance().GetSceneList().stageScenes.First(x => x.GetSceneType() == SceneType.RegularStage));
         }
 
+        // Clear watched cutscenes so they replay each time from the menu
+        playerData.GetWatchedActStartCutscenes().Clear();
+
         // Save the character selection behind the scenes using Slot_0
         GMSaveSystem.Instance().SetSaveSlot(SaveSlot.Slot_0);
 
