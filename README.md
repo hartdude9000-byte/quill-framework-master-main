@@ -1,4 +1,4 @@
-DASH THE RABBIT 
+## DASH THE RABBIT 
 
 A sonic the hedgehog inspired 2D platformer built in Unity.
 
